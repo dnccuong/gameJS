@@ -6,18 +6,14 @@ const answerButtonsElement = document.getElementById('answer-buttons');
 
 let shuffledQuestions, currentQuestionIndex;
 
-/**
- * Start the game by hiding the start button and shuffling the questions
- */
+
 startButton.addEventListener('click', startGame);
 nextButton.addEventListener('click', () => {
   currentQuestionIndex++;
   setNextQuestion();
 });
 
-/**
- * Start the game by hiding the start button and shuffling the questions
- */
+
 function startGame() {
   startButton.classList.add('hide');
   shuffledQuestions = questions.sort(() => Math.random() - 0.5);
@@ -26,18 +22,13 @@ function startGame() {
   setNextQuestion();
 }
 
-/**
- * Set the next question
- */
+
 function setNextQuestion() {
   resetState();
   showQuestion(shuffledQuestions[currentQuestionIndex]);
 }
 
-/**
- * Show the question and its answers
- * @param {Object} question 
- */
+
 function showQuestion(question) {
   questionElement.innerText = question.question;
   question.answers.forEach(answer => {
@@ -52,9 +43,7 @@ function showQuestion(question) {
   });
 }
 
-/**
- * Reset the state of the game
- */
+
 function resetState() {
   clearStatusClass(document.body);
   nextButton.classList.add('hide');
@@ -63,10 +52,7 @@ function resetState() {
   }
 }
 
-/**
- * Select an answer and set the status class
- * @param {Event} e 
- */
+
 function selectAnswer(e) {
   const selectedButton = e.target;
   const correct = selectedButton.dataset.correct;
@@ -82,11 +68,7 @@ function selectAnswer(e) {
   }
 }
 
-/**
- * Set the status class
- * @param {HTMLElement} element 
- * @param {Boolean} correct 
- */
+
 function setStatusClass(element, correct) {
   clearStatusClass(element);
   if (correct) {
@@ -96,10 +78,7 @@ function setStatusClass(element, correct) {
   }
 }
 
-/**
- * Clear the status class
- * @param {HTMLElement} element 
- */
+
 function clearStatusClass(element) {
   element.classList.remove('correct');
   element.classList.remove('wrong');
